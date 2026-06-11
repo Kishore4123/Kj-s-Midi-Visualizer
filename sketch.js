@@ -147,11 +147,21 @@ async function initAudio() {
     
     reverb = new Tone.Freeverb({ roomSize: 0.9, dampening: 2000 }).toDestination();
     
+    // --- PUNCHY HOUSE PIANO ---
     synth = new Tone.PolySynth(Tone.Synth, {
-      oscillator: { type: "fatsawtooth", count: 3, spread: 30 },
-      envelope: { attack: 0.4, decay: 0.2, sustain: 0.9, release: 1.5 }
+      oscillator: { 
+        type: "triangle" // Clean, bright wave
+      },
+      envelope: { 
+        attack: 0.005, // Instant hit
+        decay: 1.5,    // Fades out like a struck string
+        sustain: 0.1,  // Very quiet if held down
+        release: 1     // Natural ring-out when key is released
+      }
     }).connect(reverb);
-    Tone.Destination.volume.value = -10; 
+    
+    // Raise the volume slightly, as percussive sounds feel quieter
+    Tone.Destination.volume.value = -5;
 
     drumKit = new Tone.Sampler({
       urls: {
