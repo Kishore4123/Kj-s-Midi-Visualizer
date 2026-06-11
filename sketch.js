@@ -124,16 +124,21 @@ function windowResized() {
   }
 }
 
-let listeners = [];
+// --- FAULTY PART RECTIFIED: MODERN WEBMIDI LISTENER ---
 function updateListener() {
-  for (let listener of listeners) listener.remove();
-  listeners = [];
+  // Wipe all previous listeners from all inputs to prevent duplicates
+  WebMidi.inputs.forEach(input => {
+    input.removeListener("noteon");
+    input.removeListener("noteoff");
+  });
+
   let currentSelection = midiSelect.selected();
   if (currentSelection) {
     let inp = WebMidi.getInputById(currentSelection);
     if (inp) {
-      listeners.push(...inp.addListener('noteon', noteon));
-      listeners.push(...inp.addListener('noteoff', noteoff));
+      // Safely attach modern v3 listeners directly without array spreading
+      inp.addListener('noteon', noteon);
+      inp.addListener('noteoff', noteoff);
     }
   }
 }
