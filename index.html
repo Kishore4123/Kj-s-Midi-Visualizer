@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.js"></script>
+    <script src="https://unpkg.com/@tonejs/midi"></script>
+    <script src="https://unpkg.com/tone"></script>
+    <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Music Performance Studio</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <div class="logo">
+            <h1>🎵 Interactive Music Studio</h1>
+            <p class="tagline">Real-time Audio Visualization & Performance</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Canvas Area -->
+        <div class="canvas-wrapper" id="canvasContainer">
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+          <div class="control-section">
+            <h3 class="section-title">🎹 MIDI Devices</h3>
+            <div id="midiSelectContainer" class="control-group"></div>
+          </div>
+
+          <div class="control-section">
+            <h3 class="section-title">📁 Load Performance</h3>
+            <div id="uploadContainer" class="control-group"></div>
+            <small class="help-text">Upload .mid or .midi files</small>
+          </div>
+
+          <div class="control-section audio-section">
+            <h3 class="section-title">🔊 Audio Engine</h3>
+            <div id="audioContainer" class="control-group"></div>
+            <small class="help-text">Enable audio context first</small>
+          </div>
+
+          <div class="control-section">
+            <h3 class="section-title">🖐️ Hand Control</h3>
+            <div class="hand-info">
+              <p><strong>Air Drums:</strong> Use your hands to create drum sounds</p>
+              <p><strong>Left Zone:</strong> Kick Drum</p>
+              <p><strong>Center Zone:</strong> Snare</p>
+              <p><strong>Right Zone:</strong> Crash</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>&copy; 2025 Interactive Music Studio. Built with p5.js, Tone.js, and MediaPipe.</p>
+      </footer>
+    </div>
+
+    <script src="sketch.js"></script>
+  </body>
+</html>
